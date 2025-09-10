@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SKAK International</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    
+    <style>
+        /* Additional styles specific to about page */
+        .about-hero {
+            background: linear-gradient(135deg, var(--color-50) 0%, var(--color-100) 100%);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23D73B40" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23B9262B" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .legacy-timeline {
+            position: relative;
+            padding: 80px 0;
+            background: white;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--color-400), var(--color-600));
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-entry {
+            position: relative;
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-entry:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-entry:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(215, 59, 64, 0.1);
+            border: 2px solid var(--color-100);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(215, 59, 64, 0.2);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        .timeline-entry:nth-child(odd) .timeline-content::before {
+            right: -40px;
+            border-left-color: var(--color-100);
+        }
+
+        .timeline-entry:nth-child(even) .timeline-content::before {
+            left: -40px;
+            border-right-color: var(--color-100);
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--color-500), var(--color-600));
+            color: white;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(215, 59, 64, 0.3);
+            z-index: 10;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(215, 59, 64, 0.1);
+            margin-bottom: 40px;
+            border: 2px solid var(--color-100);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--color-500), var(--color-600));
+        }
+
+        .leader-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(215, 59, 64, 0.2);
+        }
+
+        .leader-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-200), var(--color-300));
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--color-700);
+            border: 5px solid var(--color-100);
+        }
+
+        .leader-years {
+            background: var(--color-100);
+            color: var(--color-700);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .values-section {
+            background: linear-gradient(135deg, var(--color-50) 0%, white 100%);
+            padding: 100px 0;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(215, 59, 64, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid var(--color-100);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(215, 59, 64, 0.2);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-400), var(--color-500));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .achievement-stats {
+            background: var(--color-800);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .achievement-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.05"/></svg>') repeat;
+        }
+
+        .achievement-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievement-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .achievement-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--color-200);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 20px 0;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: var(--color-400);
+        }
+
+        .breadcrumb-item a {
+            color: var(--color-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--color-800);
+        }
+
+        .quote-section {
+            background: var(--color-100);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--color-700);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--color-400);
+            position: absolute;
+            top: -20px;
+        }
+
+        .quote-text::before {
+            left: -10px;
+        }
+
+        .quote-text::after {
+            right: -10px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-entry {
+                flex-direction: column !important;
+                margin-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::before {
+                display: none;
+            }
+            
+            .timeline-date {
+                left: 30px;
+                width: 120px;
+                height: 120px;
+                font-size: 1rem;
+            }
+            
+            .quote-text::before,
+            .quote-text::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">SKAK International</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="process.html">Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-content">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                    </ol>
+                </nav>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title mb-4" style="color: var(--color-800);">A Legacy of Excellence</h1>
+                        <p class="hero-subtitle mb-4" style="color: var(--color-600);">
+                            50 Years in the Hing Industry
+                        </p>
+                        <p class="lead mb-4" style="color: var(--color-700);">
+                            SKAK International stands as a beacon of excellence in the world of spices, boasting a rich legacy spanning five decades. Established with a commitment to importing and manufacturing Hing from various corners of the globe, this legendary company has been a cornerstone of quality and innovation.
+                        </p>
+                        <p style="color: var(--color-700);">
+                            Our story begins in pre-partition India, at Dera Ismail Khan, Khyber Pakhtunkhwa, a region in current day Pakistan, where centuries of tradition meets modern expertise.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div style="font-size: 8rem; color: var(--color-300); opacity: 0.5;">🏛️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-text">
+                Seeds of a long journey, rooted in tradition, flourishing through generations
+            </div>
+            <p style="color: var(--color-600); font-size: 1.1rem;">— The SKAK International Story</p>
+        </div>
+    </section>
+
+    <!-- Legacy Timeline -->
+    <section class="legacy-timeline">
+        <div class="container">
+            <h2 class="section-title">Our Journey Through Time</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- 1903 - The Beginning -->
+                <div class="timeline-entry">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 20px;">The Foundation</h3>
+                        <p class="mb-3">
+                            <strong>Lala Chetan Das Bhatia</strong> is born in the idyllic settings of Dera Ismail Khan. His life soon becomes infused with the sharp, piercing aroma of Hing. By his youth, Lala Ji had developed close bonds with the local Pashtuns, the area's major Hing producers.
+                        </p>
+                        <p class="mb-0">
+                            As the spice was in high demand in mainland India, Lala Ji soon began procuring Hing from the Pashtuns and trading it with Hindus in mainland India. This would mark the beginning of a legacy that runs to this day.
+                        </p>
+                    </div>
+                    <div class="timeline-date">1903</div>
+                </div>
+
+                <!-- 1920s-1940s - Pre-Partition Era -->
+                <div class="timeline-entry">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 20px;">Pre-Partition Success</h3>
+                        <p class="mb-3">
+                            Lala Ji's endearing persona made him the first face of SKAK International, as the company transported high quality Hing into pre-partition mainland India. His deep relationships with Pashtun producers became the foundation of our quality sourcing.
+                        </p>
+                        <p class="mb-0">
+                            The region had been a hub for cultivating high quality Hing since centuries, populated by both Pashtun and Hindokwan (Hindu) communities working in harmony.
+                        </p>
+                    </div>
+                    <div class="timeline-date">1920s-1940s</div>
+                </div>
+
+                <!-- 1947-1960s - Post Independence -->
+                <div class="timeline-entry">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 20px;">Post-Independence Growth</h3>
+                        <p class="mb-3">
+                            After partition, the business adapted to new challenges while maintaining the same commitment to quality. The family continued to build upon Lala Ji's legacy, establishing SKAK International as a trusted name in the Indian spice market.
+                        </p>
+                        <p class="mb-0">
+                            <strong>Shri Ram Lal Bhatia</strong> consolidated SKAK International's Hing business in India, focusing primarily on the Hindi heartland of India's north.
+                        </p>
+                    </div>
+                    <div class="timeline-date">1950s</div>
+                </div>
+
+                <!-- 1965 - Second Generation Leadership -->
+                <div class="timeline-entry">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 20px;">Expansion to South India</h3>
+                        <p class="mb-3">
+                            <strong>Shri Ajay Bhatia</strong> played a vital role in expanding the company's presence. He travelled across India, exploring new markets for the company. Shri Ajay Bhatia was surprised to find that south India was, in fact, a bigger market.
+                        </p>
+                        <p class="mb-0">
+                            Hing is widely used in Sambar, a staple dish of the south and is thus consumed extensively. The 1990s saw the company supplying raw Hing to manufacturers across southern cities from Hyderabad to Chennai and Kumbakonam to Thrissur.
+                        </p>
+                    </div>
+                    <div class="timeline-date">1965-1990s</div>
+                </div>
+
+                <!-- 1988 - Third Generation -->
+                <div class="timeline-entry">
+                    <div class="timeline-content">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 20px;">New Generation Leadership</h3>
+                        <p class="mb-3">
+                            At the turn of the 21st century, SKAK International's journey of growth was further spiced up by the infusion of its fourth generation of leadership. <strong>Sri Sharad Bhatia</strong>, the current chairman, joined the organisation at a young age of 20 years.
+                        </p>
+                        <p class="mb-0">
+                            Regular family discussions revolving around Hing had seeped him with a good understanding of the spice. In no time, he realized that Hing enjoyed a very special place in the Indian kitchen and cuisine.
+                        </p>
+                    </div>
+                    <div class="timeline-date">1988-Present</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section style="background: var(--color-50); padding: 100px 0;">
+        <div class="container">
+            <h2 class="section-title">Our Visionary Leaders</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="leader-card">
+                        <div class="leader-image">👨‍💼</div>
+                        <div class="leader-years">1903 - 1972</div>
+                        <h4 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 15px;">Late Lala Chetan Das Bhatia</h4>
+                        <p class="mb-3" style="color: var(--color-600); font-weight: 600;">Founder & Pioneer</p>
+                        <p>The visionary who established our legacy in Dera Ismail Khan, building lasting relationships with Pashtun producers and creating the foundation of our quality standards.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="leader-card">
+                        <div class="leader-image">🧑‍💼</div>
+                        <div class="leader-years">Born 1965</div>
+                        <h4 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 15px;">Shri Ajay Bhatia</h4>
+                        <p class="mb-3" style="color: var(--color-600); font-weight: 600;">Expansion Leader</p>
+                        <p>The strategic mind behind our expansion into South India, discovering new markets and significantly growing our customer base across southern cities from Hyderabad to Thrissur.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="leader-card">
+                        <div class="leader-image">👨‍💻</div>
+                        <div class="leader-years">Born 1988</div>
+                        <h4 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 15px;">Shri Sharad Bhatia</h4>
+                        <p class="mb-3" style="color: var(--color-600); font-weight: 600;">Current Chairman</p>
+                        <p>The fourth-generation leader who joined at age 20, bringing fresh perspectives while maintaining our traditional values and commitment to excellence in the hing industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Stats -->
+    <section class="achievement-stats">
+        <div class="achievement-content">
+            <div class="container">
+                <h2 class="section-title text-white">Our Achievements</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-number">50+</div>
+                            <h5>Years of Excellence</h5>
+                            <p class="mb-0">Decades of unwavering commitment to quality and customer satisfaction</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-number">5</div>
+                            <h5>Different Origins</h5>
+                            <p class="mb-0">Premium hing sourced from Afghanistan, Iran, Uzbekistan, Kyrgyzstan, and Kazakhstan</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-number">4</div>
+                            <h5>Generations</h5>
+                            <p class="mb-0">Family legacy passed down through four generations of expertise</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="achievement-card">
+                            <div class="achievement-number">PAN</div>
+                            <h5>India Coverage</h5>
+                            <p class="mb-0">Serving customers across the entire Indian subcontinent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Uncompromising Quality</h5>
+                        <p>We maintain the highest standards in sourcing, processing, and delivering premium hing, ensuring every batch meets our exacting quality criteria.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Trust & Reliability</h5>
+                        <p>Built over five decades, our relationships with farmers, suppliers, and customers are founded on mutual trust and consistent reliability.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Sustainable Practices</h5>
+                        <p>We work closely with farming communities to ensure sustainable harvesting methods that protect the environment and support local livelihoods.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Innovation</h5>
+                        <p>While respecting traditional methods, we continuously innovate in processing, packaging, and distribution to serve our customers better.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Customer Focus</h5>
+                        <p>Every decision we make is guided by our commitment to exceeding customer expectations and providing tailored solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h5 style="color: var(--color-700); margin-bottom: 15px;">Passion</h5>
+                        <p>Our deep passion for hing drives everything we do, from sourcing the finest varieties to ensuring perfect flavor in every kitchen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section style="background: var(--color-800); color: white; padding: 80px 0; position: relative;">
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 style="color: white; font-family: 'Playfair Display', serif; margin-bottom: 20px;">Join Our Legacy</h2>
+                    <p class="lead mb-0">
+                        Experience the difference that five decades of expertise makes. Partner with SKAK International for premium quality hing that elevates every culinary creation.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <a href="index.html#contact" class="btn btn-primary-custom">
+                        Contact Us Today <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>SKAK International</h5>
+                    <p>India's leading hing importer with over 50 years of expertise in bringing you the finest asafoetida from around the world.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="process.html">Our Process</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@skakinternational.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +91-XXXX-XXXXXX</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> India</p>
+                </div>
+            </div>
+            <hr style="border-color: var(--color-700);">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2025 SKAK International. All rights reserved. | A Legacy of Excellence Since 1903</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 30px rgba(215, 59, 64, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(215, 59, 64, 0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to timeline entries, leader cards, and value cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.timeline-entry, .leader-card, .value-card, .achievement-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                if (element.classList.contains('timeline-entry')) {
+                    element.style.transform = 'translateX(-50px)';
+                } else {
+                    element.style.transform = 'translateY(30px)';
+                }
+                element.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+                observer.observe(element);
+            });
+
+            // Counter animation for achievement stats
+            const achievementNumbers = document.querySelectorAll('.achievement-number');
+            const animateCounter = (element) => {
+                const target = element.textContent;
+                
+                if (target === 'PAN') {
+                    // Special case for PAN
+                    return;
+                }
+                
+                const targetNum = parseInt(target.replace(/\D/g, '')) || 0;
+                const suffix = target.replace(/\d/g, '');
+                let current = 0;
+                const increment = Math.ceil(targetNum / 30);
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= targetNum) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = current + suffix;
+                    }
+                }, 50);
+            };
+
+            // Observe achievement cards for counter animation
+            const achievementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        const numberElement = entry.target.querySelector('.achievement-number');
+                        if (numberElement) {
+                            animateCounter(numberElement);
+                            entry.target.dataset.animated = 'true';
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                achievementObserver.observe(card);
+            });
+
+            // Timeline line animation
+            const timelineLine = document.querySelector('.timeline-line');
+            if (timelineLine) {
+                timelineLine.style.height = '0';
+                timelineLine.style.transition = 'height 2s ease';
+                
+                const timelineObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                timelineLine.style.height = '100%';
+                            }, 500);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                timelineObserver.observe(document.querySelector('.timeline-container'));
+            }
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

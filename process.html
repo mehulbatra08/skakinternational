@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Process - SKAK International</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    
+    <style>
+        /* Additional styles specific to process page */
+        .process-hero {
+            background: linear-gradient(135deg, var(--color-800) 0%, var(--color-900) 100%);
+            padding: 150px 0 100px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.05"/></svg>') repeat;
+        }
+
+        .process-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-detail-section {
+            padding: 80px 0;
+            overflow: visible;
+        }
+
+        .process-detail-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(215, 59, 64, 0.1);
+            margin-bottom: 50px;
+            border: 2px solid var(--color-100);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .process-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--color-500), var(--color-600));
+        }
+
+        .process-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(215, 59, 64, 0.2);
+        }
+
+        .process-step-number {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-500), var(--color-600));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 25px rgba(215, 59, 64, 0.3);
+            z-index: 10;
+        }
+
+        .process-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-100), var(--color-200));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--color-600);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="%23D73B40" opacity="0.2"/><circle cx="75" cy="75" r="1.5" fill="%23B9262B" opacity="0.1"/></svg>') repeat;
+        }
+
+        .sub-process {
+            background: var(--color-50);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 4px solid var(--color-500);
+        }
+
+        .sub-process h6 {
+            color: var(--color-700);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .process-stats {
+            background: var(--color-50);
+            padding: 60px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(215, 59, 64, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--color-600);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            color: var(--color-700);
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .quality-section {
+            background: linear-gradient(135deg, var(--color-50) 0%, white 100%);
+            padding: 80px 0;
+        }
+
+        .quality-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(215, 59, 64, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .quality-point:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(215, 59, 64, 0.15);
+        }
+
+        .quality-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-400), var(--color-500));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 20px 0;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: var(--color-400);
+        }
+
+        .breadcrumb-item a {
+            color: var(--color-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: var(--color-800);
+        }
+
+        @media (max-width: 768px) {
+            .process-detail-card {
+                padding: 30px 20px;
+            }
+            
+            .process-step-number {
+                top: -20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">SKAK International</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="process.html">Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Process Hero Section -->
+    <section class="process-hero">
+        <div class="process-content">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Our Process</li>
+                    </ol>
+                </nav>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="hero-title text-white mb-4">The Art of Hing Harvesting</h1>
+                        <p class="lead text-white mb-4">
+                            Discover the meticulous process behind harvesting the world's finest asafoetida, from identifying the plant in mountain regions to delivering export-ready premium hing to your doorstep.
+                        </p>
+                        <p class="text-white opacity-75">
+                            A time-honored tradition spanning generations, perfected through decades of expertise and deep understanding of this precious spice.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div style="font-size: 8rem; color: rgba(255,255,255,0.2);">🌿</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Statistics -->
+    <section class="process-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">30-50</div>
+                        <div class="stat-label">KG per 3-4K Plants</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">5-10</div>
+                        <div class="stat-label">Days Sun Exposure</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Different Origins</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Process Steps -->
+    <section class="process-detail-section">
+        <div class="container">
+            <h2 class="section-title">Step-by-Step Harvesting Process</h2>
+
+            <!-- Step 1: Identifying the Plant -->
+            <div class="process-detail-card">
+                <div class="process-step-number">1</div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="process-image-placeholder">
+                            🌱
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 25px;">Identifying the Plant</h3>
+                        <p class="mb-4">
+                            During April and May, asafoetida plants emerge from the mountainous terrain, their roots containing the precious hing. Recognition is absolutely crucial at this stage, as farmers must spot the plant's distinct appearance to ensure successful harvesting before May's stems naturally fall.
+                        </p>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-search me-2"></i>Identifying Asafoetida</h6>
+                            <p class="mb-0">In spring, recognizing asafoetida amidst nature's diverse backdrop initiates the entire harvesting process. Experienced farmers can identify the characteristic leaves and growth patterns.</p>
+                        </div>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-mountain me-2"></i>Mountain Terrain Navigation</h6>
+                            <p class="mb-0">The plant's image displays recognizable leaves atop mountainous regions. Farmers must navigate challenging terrain to locate these precious plants growing in their natural habitat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Root Preparation and Exposure -->
+            <div class="process-detail-card">
+                <div class="process-step-number">2</div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="process-image-placeholder">
+                            ☀️
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 25px;">Exposing Roots to Direct Sun</h3>
+                        <p class="mb-4">
+                            The asafoetida roots undergo 5–10 days of direct sun exposure before hing extraction begins. This vital step is crucial for proper resin preparation and ensures the development of the distinctive flavor profile that makes our hing exceptional.
+                        </p>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-sun me-2"></i>Preservation via Sun Drying</h6>
+                            <p class="mb-0">Direct sunlight on asafoetida roots preserves the resin while enriching its flavor—a traditional method that has been perfected over centuries for enhancing spice depth and potency.</p>
+                        </div>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-clock me-2"></i>Duration Balance</h6>
+                            <p class="mb-0">Careful balance in sun exposure duration is crucial. Too little exposure results in poor resin quality, while excessive exposure can negatively impact the taste and overall quality of the end product.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Extracting the Asafoetida -->
+            <div class="process-detail-card">
+                <div class="process-step-number">3</div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="process-image-placeholder">
+                            🔪
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 25px;">Extracting the Asafoetida</h3>
+                        <p class="mb-4">
+                            From mid-July to mid-September, skilled farmers perform sequential incisions on the root, patiently waiting for the precious resin to seep out before making additional cuts. This delicate method yields 30–50 kg of premium asafoetida from 3–4 thousand plants, with yields varying based on weather conditions.
+                        </p>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-cut me-2"></i>Incising the Root</h6>
+                            <p class="mb-0">The extraction begins as experienced farmers skillfully make precise cuts on the plant's root, using traditional techniques passed down through generations to optimize resin collection.</p>
+                        </div>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-tint me-2"></i>Gathering Resin</h6>
+                            <p class="mb-0">Post-incisions, the precious asafoetida resin slowly emerges. Farmers meticulously gather every drop to minimize waste and maximize yield, ensuring no precious resin is lost in the process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Storing and Packing -->
+            <div class="process-detail-card">
+                <div class="process-step-number">4</div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="process-image-placeholder">
+                            📦
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <h3 style="color: var(--color-700); font-family: 'Playfair Display', serif; margin-bottom: 25px;">Storing and Packing for Export</h3>
+                        <p class="mb-4">
+                            By September-end, farmers carefully transport their precious produce down from the mountains to their homes. From there, it reaches our exporter's specialized storage facility, where it undergoes thorough quality checks and is professionally repacked in export-ready containers for shipping to India.
+                        </p>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-mountain me-2"></i>The Final Harvest</h6>
+                            <p class="mb-0">The asafoetida is carefully harvested and transported down from the hilly regions using traditional methods that preserve quality during the journey to processing facilities.</p>
+                        </div>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-check-circle me-2"></i>Quality Checks</h6>
+                            <p class="mb-0">Before exporting, every batch of asafoetida goes through our rigorous quality control processes to ensure it meets and exceeds the required standards for consumption and culinary use.</p>
+                        </div>
+                        
+                        <div class="sub-process">
+                            <h6><i class="fas fa-shipping-fast me-2"></i>Export-Ready Packaging</h6>
+                            <p class="mb-0">The precious spice is professionally packaged using specialized materials and techniques that preserve its quality, potency, and aroma during transit, ensuring it reaches its destination in prime condition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section class="quality-section">
+        <div class="container">
+            <h2 class="section-title">Our Quality Commitment</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Premium Selection</h5>
+                            <p class="mb-0">Only the finest asafoetida plants are selected for harvesting, ensuring consistent quality and potency in every batch.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Laboratory Testing</h5>
+                            <p class="mb-0">Each batch undergoes comprehensive laboratory testing to verify purity, potency, and adherence to international quality standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Safe Storage</h5>
+                            <p class="mb-0">Climate-controlled storage facilities maintain optimal conditions to preserve the natural properties and extend shelf life.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Careful Transportation</h5>
+                            <p class="mb-0">Specialized packaging and transportation methods ensure the hing maintains its quality from harvest to your kitchen.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Expert Team</h5>
+                            <p class="mb-0">Our experienced team with over 50 years of combined expertise oversees every step of the process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-point">
+                        <div class="quality-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--color-700); margin-bottom: 10px;">Sustainable Practices</h5>
+                            <p class="mb-0">We work closely with farmers to ensure sustainable harvesting practices that protect the environment and support local communities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section style="background: var(--color-100); padding: 80px 0;">
+        <div class="container text-center">
+            <h2 style="color: var(--color-800); font-family: 'Playfair Display', serif; margin-bottom: 20px;">Experience the SKAK Difference</h2>
+            <p class="lead mb-4" style="color: var(--color-700);">
+                From mountain peaks to your kitchen - witness the journey of premium hing with uncompromising quality.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="index.html#products" class="btn btn-primary-custom">
+                    Explore Our Products <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+                <a href="index.html#contact" class="btn" style="background: white; color: var(--color-600); border: 2px solid var(--color-600); padding: 15px 30px; border-radius: 50px; font-weight: 600;">
+                    Contact Us <i class="fas fa-phone ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>SKAK International</h5>
+                    <p>India's leading hing importer with over 50 years of expertise in bringing you the finest asafoetida from around the world.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="process.html">Our Process</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@skakinternational.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +91-XXXX-XXXXXX</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> India</p>
+                </div>
+            </div>
+            <hr style="border-color: var(--color-700);">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2025 SKAK International. All rights reserved. | Your Flavorful Journey, Our Hing Expertise</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 30px rgba(215, 59, 64, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(215, 59, 64, 0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to process cards and quality points
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.process-detail-card, .quality-point, .stat-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                if (element.classList.contains('process-detail-card')) {
+                    element.style.transform = 'translateY(50px)';
+                } else if (element.classList.contains('quality-point')) {
+                    element.style.transform = 'translateX(-30px)';
+                } else {
+                    element.style.transform = 'translateY(30px)';
+                }
+                element.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+                observer.observe(element);
+            });
+
+            // Counter animation for stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const animateCounter = (element) => {
+                const target = element.textContent;
+                const isRange = target.includes('-');
+                
+                if (isRange) {
+                    const [start, end] = target.split('-').map(num => parseInt(num) || 0);
+                    let current = 0;
+                    const increment = Math.ceil(end / 50);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= end) {
+                            element.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            element.textContent = `${Math.min(start, current)}-${current}`;
+                        }
+                    }, 50);
+                } else {
+                    const targetNum = parseInt(target.replace(/\D/g, '')) || 0;
+                    const suffix = target.replace(/\d/g, '');
+                    let current = 0;
+                    const increment = Math.ceil(targetNum / 50);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= targetNum) {
+                            element.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            element.textContent = current + suffix;
+                        }
+                    }, 50);
+                }
+            };
+
+            // Observe stat cards for counter animation
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        const numberElement = entry.target.querySelector('.stat-number');
+                        if (numberElement) {
+                            animateCounter(numberElement);
+                            entry.target.dataset.animated = 'true';
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.stat-card').forEach(card => {
+                statObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
