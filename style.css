@@ -1,14 +1,14 @@
 :root {
-    --color-50: #FEFAFA;
-    --color-100: #FAE4E5;
-    --color-200: #F1BABC;
-    --color-300: #E89093;
-    --color-400: #E06569;
-    --color-500: #D73B40;
-    --color-600: #B9262B;
-    --color-700: #8F1D21;
-    --color-800: #651417;
-    --color-900: #3A0C0D;
+    --color-50: #eaf9f1;
+    --color-100: #8ad7b0;
+    --color-200: #8ad7b0;
+    --color-300: #4baa7d;
+    --color-400: #4baa7d;
+    --color-500: #2e7b5d;
+    --color-600: #2e7b5d;
+    --color-700: #174736;
+    --color-800: #174736;
+    --color-900: #174736;
 }
 
 * {
@@ -24,27 +24,28 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, var(--color-50) 0%, var(--color-100) 100%);
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
-.hero-section::before {
-    content: '';
+.hero-video {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23D73B40" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23B9262B" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="%23E89093" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
-    opacity: 0.3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
 }
 
 .navbar {
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(215, 59, 64, 0.1);
+    box-shadow: 0 2px 20px rgba(23, 71, 54, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -82,32 +83,73 @@ body {
     width: 100%;
 }
 
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-outline-light-custom {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-outline-light-custom:hover {
+    background: white;
+    color: var(--color-700);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
 }
 
 .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
     font-weight: 700;
-    color: var(--color-800);
+    color: white;
     margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--color-600);
+    color: white;
     margin-bottom: 2rem;
     font-weight: 300;
 }
 
 .hero-description {
     font-size: 1.1rem;
-    color: var(--color-700);
+    color: white;
     margin-bottom: 3rem;
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-primary-custom {
@@ -119,12 +161,12 @@ body {
     border-radius: 50px;
     color: white;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(215, 59, 64, 0.3);
+    box-shadow: 0 8px 25px rgba(23, 71, 54, 0.3);
 }
 
 .btn-primary-custom:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(215, 59, 64, 0.4);
+    box-shadow: 0 12px 35px rgba(23, 71, 54, 0.4);
     background: linear-gradient(135deg, var(--color-600), var(--color-700));
 }
 
@@ -188,7 +230,7 @@ body {
     background: white;
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 10px 40px rgba(215, 59, 64, 0.1);
+    box-shadow: 0 10px 40px rgba(23, 71, 54, 0.1);
     transition: all 0.3s ease;
     height: 100%;
     border: 1px solid var(--color-100);
@@ -196,7 +238,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(215, 59, 64, 0.2);
+    box-shadow: 0 20px 60px rgba(23, 71, 54, 0.2);
 }
 
 .product-icon {
@@ -341,6 +383,11 @@ body {
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
     }
     
     .timeline::before {
