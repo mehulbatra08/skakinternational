@@ -229,11 +229,14 @@ body {
 .product-card {
     background: white;
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px 30px;
     box-shadow: 0 10px 40px rgba(23, 71, 54, 0.1);
     transition: all 0.3s ease;
     height: 100%;
     border: 1px solid var(--color-100);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product-card:hover {
@@ -241,17 +244,327 @@ body {
     box-shadow: 0 20px 60px rgba(23, 71, 54, 0.2);
 }
 
+.product-card h5 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.product-card p {
+    margin-bottom: 0;
+}
+
 .product-icon {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(135deg, var(--color-200), var(--color-300));
-    border-radius: 20px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 30px rgba(23, 71, 54, 0.3);
+}
+
+/* Mountain Icon */
+.product-icon-mountain::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 35px solid var(--color-700);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-icon-mountain::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 25px solid var(--color-500);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Star Icon */
+.product-icon-star {
+    background: linear-gradient(135deg, var(--color-400), var(--color-500));
+}
+
+.product-icon-star::before {
+    content: '★';
+    font-size: 3rem;
+    color: var(--color-50);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Crescent Moon Icon */
+.product-icon-crescent {
+    background: linear-gradient(135deg, var(--color-300), var(--color-400));
+}
+
+.product-icon-crescent::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-700);
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    box-shadow: 15px 0 0 var(--color-50);
+}
+
+/* Diamond Icon */
+.product-icon-diamond {
+    background: linear-gradient(135deg, var(--color-500), var(--color-600));
+}
+
+.product-icon-diamond::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--color-50);
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Sparkle Icon */
+.product-icon-sparkle::before {
+    content: '✧';
+    font-size: 3.5rem;
     color: var(--color-700);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.product-icon-sparkle::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--color-700);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
+/* Flame Icon */
+.product-icon-flame {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+}
+
+.product-icon-flame::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 50px solid var(--color-50);
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-icon-flame::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 40px solid rgba(255, 255, 255, 0.8);
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Peak Icon */
+.product-icon-peak::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 45px solid var(--color-700);
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-icon-peak::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid var(--color-500);
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Leaf Icon */
+.product-icon-leaf {
+    background: linear-gradient(135deg, var(--color-200), var(--color-300));
+}
+
+.product-icon-leaf::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background: var(--color-700);
+    border-radius: 0 100% 0 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.product-icon-leaf::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 25px;
+    background: var(--color-700);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(20px);
+}
+
+/* Blend Icon */
+.product-icon-blend {
+    background: linear-gradient(135deg, var(--color-400), var(--color-600));
+    position: relative;
+}
+
+.product-icon-blend::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: var(--color-50);
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+    opacity: 0.8;
+}
+
+.product-icon-blend::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: var(--color-50);
+    border-radius: 50%;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.8;
+}
+
+/* Powder Icon */
+.product-icon-powder {
+    background: linear-gradient(135deg, var(--color-300), var(--color-400));
+    position: relative;
+}
+
+.product-icon-powder::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--color-700);
+    border-radius: 50%;
+    top: 25px;
+    left: 30px;
+    box-shadow: 
+        20px 10px 0 var(--color-700),
+        10px 25px 0 var(--color-700),
+        30px 25px 0 var(--color-700),
+        15px 40px 0 var(--color-700),
+        35px 40px 0 var(--color-700);
+}
+
+/* Solid/Khada Icon */
+.product-icon-solid {
+    background: linear-gradient(135deg, var(--color-500), var(--color-600));
+}
+
+.product-icon-solid::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: var(--color-50);
+    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Crystal/Dana Icon */
+.product-icon-crystal {
+    background: linear-gradient(135deg, var(--color-400), var(--color-500));
+}
+
+.product-icon-crystal::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--color-50);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-icon-crystal::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 35px solid var(--color-50);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.9;
 }
 
 .legacy-section {
